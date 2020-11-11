@@ -1,6 +1,6 @@
 apiVersion: cache.my.domain/v1alpha1
 kind: Memcached
 metadata:
-  name: memcached-sample
+  name: memcached-sample-zero-size
 spec:
   size: 0
