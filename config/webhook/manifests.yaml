@@ -11,12 +11,12 @@ webhooks:
     service:
       name: webhook-service
       namespace: system
-      path: /mutate-cache-example-com-v1alpha1-memcached
+      path: /mutate-cache-my-domain-v1alpha1-memcached
   failurePolicy: Fail
   name: mmemcached.kb.io
   rules:
   - apiGroups:
-    - cache.example.com
+    - cache.my.domain
     apiVersions:
     - v1alpha1
     operations:
@@ -37,12 +37,12 @@ webhooks:
     service:
       name: webhook-service
       namespace: system
-      path: /validate-cache-example-com-v1alpha1-memcached
+      path: /validate-cache-my-domain-v1alpha1-memcached
   failurePolicy: Fail
   name: vmemcached.kb.io
   rules:
   - apiGroups:
-    - cache.example.com
+    - cache.my.domain
     apiVersions:
     - v1alpha1
     operations:

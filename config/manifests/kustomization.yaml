@@ -2,3 +2,7 @@ resources:
 - ../default
 - ../samples
 - ../scorecard
+
+patchesStrategicMerge:
+# Exposes port 9443 for the OLM-managed webhook server.
+- olm_manager_webhook_patch.yaml

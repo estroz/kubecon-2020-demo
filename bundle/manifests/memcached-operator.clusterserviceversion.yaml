@@ -51,7 +51,7 @@ spec:
           - update
           - watch
         - apiGroups:
-          - cache.example.com
+          - cache.my.domain
           resources:
           - memcacheds
           verbs:
@@ -63,13 +63,13 @@ spec:
           - update
           - watch
         - apiGroups:
-          - cache.example.com
+          - cache.my.domain
           resources:
           - memcacheds/finalizers
           verbs:
           - update
         - apiGroups:
-          - cache.example.com
+          - cache.my.domain
           resources:
           - memcacheds/status
           verbs:
@@ -128,6 +128,10 @@ spec:
                 - /manager
                 image: quay.io/estroz/memcached-operator:v0.0.1
                 name: manager
+                ports:
+                - containerPort: 9443
+                  name: webhook-server
+                  protocol: TCP
                 resources:
                   limits:
                     cpu: 100m
@@ -199,7 +203,7 @@ spec:
     generateName: vmemcached.kb.io
     rules:
     - apiGroups:
-      - cache.example.com
+      - cache.my.domain
       apiVersions:
       - v1alpha1
       operations:
@@ -210,7 +214,7 @@ spec:
     sideEffects: None
     targetPort: 9443
     type: ValidatingAdmissionWebhook
-    webhookPath: /validate-cache-example-com-v1alpha1-memcached
+    webhookPath: /validate-cache-my-domain-v1alpha1-memcached
   - admissionReviewVersions:
     - v1beta1
     containerPort: 443
@@ -219,7 +223,7 @@ spec:
     generateName: mmemcached.kb.io
     rules:
     - apiGroups:
-      - cache.example.com
+      - cache.my.domain
       apiVersions:
       - v1alpha1
       operations:
@@ -230,4 +234,4 @@ spec:
     sideEffects: None
     targetPort: 9443
     type: MutatingAdmissionWebhook
-    webhookPath: /mutate-cache-example-com-v1alpha1-memcached
+    webhookPath: /mutate-cache-my-domain-v1alpha1-memcached

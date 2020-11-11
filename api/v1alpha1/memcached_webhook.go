@@ -34,7 +34,7 @@ func (r *Memcached) SetupWebhookWithManager(mgr ctrl.Manager) error {
 		Complete()
 }
 
-// +kubebuilder:webhook:path=/mutate-cache-example-com-v1alpha1-memcached,mutating=true,failurePolicy=fail,groups=cache.example.com,resources=memcacheds,verbs=create;update,versions=v1alpha1,name=mmemcached.kb.io
+// +kubebuilder:webhook:path=/mutate-cache-my-domain-v1alpha1-memcached,mutating=true,failurePolicy=fail,groups=cache.my.domain,resources=memcacheds,verbs=create;update,versions=v1alpha1,name=mmemcached.kb.io
 
 var _ webhook.Defaulter = &Memcached{}
 
@@ -47,7 +47,7 @@ func (r *Memcached) Default() {
 	}
 }
 
-// +kubebuilder:webhook:verbs=create;update,path=/validate-cache-example-com-v1alpha1-memcached,mutating=false,failurePolicy=fail,groups=cache.example.com,resources=memcacheds,versions=v1alpha1,name=vmemcached.kb.io
+// +kubebuilder:webhook:verbs=create;update,path=/validate-cache-my-domain-v1alpha1-memcached,mutating=false,failurePolicy=fail,groups=cache.my.domain,resources=memcacheds,versions=v1alpha1,name=vmemcached.kb.io
 
 var _ webhook.Validator = &Memcached{}
 
@@ -71,6 +71,7 @@ func (r *Memcached) ValidateDelete() error {
 
 	return nil
 }
+
 func validateOdd(n int32) error {
 	if n%2 == 0 {
 		return errors.New("Cluster size must be an odd number")
