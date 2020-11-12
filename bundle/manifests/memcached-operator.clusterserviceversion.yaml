@@ -18,7 +18,7 @@ metadata:
     capabilities: Basic Install
     operators.operatorframework.io/builder: operator-sdk-v1.2.0
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v2
-  name: memcached-operator.v0.0.1
+  name: memcached-operator.v0.0.2
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -126,7 +126,7 @@ spec:
                 - --enable-leader-election
                 command:
                 - /manager
-                image: quay.io/estroz/memcached-operator:v0.0.1
+                image: quay.io/estroz/memcached-operator:v0.0.2
                 name: manager
                 ports:
                 - containerPort: 9443
@@ -193,7 +193,8 @@ spec:
   provider:
     name: estroz
     url: memcached.io
-  version: 0.0.1
+  replaces: memcached-operator.v0.0.1
+  version: 0.0.2
   webhookdefinitions:
   - admissionReviewVersions:
     - v1beta1
